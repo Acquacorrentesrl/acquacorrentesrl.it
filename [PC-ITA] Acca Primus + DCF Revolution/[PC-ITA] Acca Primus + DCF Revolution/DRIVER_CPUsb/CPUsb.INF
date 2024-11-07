@@ -1,0 +1,79 @@
+[Version]
+Signature="$CHICAGO$"
+Class=CPUSBDongle
+ClassGuid = {B615AB80-3D15-11D7-80EE-0080AD0043EE}
+Provider=%MCPI%
+DriverVer=12/11/2001,1.0.0.0
+
+[SourceDisksNames]
+1="CP Starter Kit","",1
+
+[SourceDisksFiles]
+cpusb.sys=1
+cpusb.inf=1
+
+[Manufacturer]
+%MfgName%=Micropi
+
+[Micropi]
+%USB\VID_1068&PID_0001.DeviceDesc%=CPUSB.Dev, USB\VID_1068&PID_0001
+
+[PreCopySection]
+HKR,,NoSetupUI,,1
+
+[DestinationDirs]
+CPUSB.Files.Ext = 10,System32\Drivers
+CPUSB.Files.Inf = 10,INF
+CPUSB.Files.wNT = 10,System32
+CPUSB.Files.w98 = 10,System
+
+[CPUSB.Dev]
+CopyFiles=CPUSB.Files.Ext, CPUSB.Files.Inf, CPUSB.Files.w98
+AddReg=CPUSB.AddReg
+
+[CPUSB.Dev.NT]
+CopyFiles=CPUSB.Files.Ext, CPUSB.Files.Inf, CPUSB.Files.wNT
+AddReg=CPUSB.AddReg
+
+[CPUSB.Dev.NT.Services]
+Addservice = CPUSB, 0x00000002, CPUSB.AddService
+
+[CPUSB.AddService]
+DisplayName    = %CPUSB.SvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 2                  ; SERVICE_AUTO_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\System32\Drivers\CPUSB.sys
+LoadOrderGroup = Base
+
+[CPUSB.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,CPUSB.sys
+
+[CPUSB.Files.Ext]
+CPUSB.sys
+
+[CPUSB.Files.Inf]
+CPUsb.Inf
+
+;---------------------------------------------------------------;
+
+;--------- Class -----------------------------------------------;
+
+[ClassInstall]
+AddReg=Class_AddReg
+
+[ClassInstall32]
+AddReg=Class_AddReg
+
+[Class_AddReg]
+HKR,,,,%DeviceClassName%
+HKR,,Icon,,"-20"
+;---------------------------------------------------------------;
+
+[Strings]
+MCPI="Micropi Elettronica"
+MfgName="Micropi Elettronica"
+USB\VID_1068&PID_0001.DeviceDesc="Chiave Hardware CPUsb"
+CPUSB.SvcDesc="CPUsb.Sys driver"
+DeviceClassName="CPUsb Dongles"

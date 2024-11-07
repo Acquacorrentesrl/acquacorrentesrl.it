@@ -1,0 +1,11 @@
+Procedimento per l’installazione e il download sui sistemi Windows
+Disattivare l’antivirus
+Estrarre l’archivio
+Avviare l’installazione tramite il file SETUP.EXE
+Installare prima PriMus Revoluzion
+Poi installare PriMus-DCF aprendo il file "INSTALLA" dalla cartella PriMus-DCF
+NOTA: Potrebbe non installare alcuni componenti aggiuntivi, nessun problema! potete installarli dopo.
+Completata l’installazione, copiate dalla cartella Crack il file cpwin32.dll e incollatelo/sostituitelo all’interno della cartella system32: C:\Windows\System32
+Copiate ora il file PriMus.EXE sempre dalla cartella Crack e sostituitelo al file originale presente nella cartella di installazione del programma.
+Disabilitate ogni aggiornamento automatico e bloccare via firewall le connessioni in uscita di Ableton
+FINE
